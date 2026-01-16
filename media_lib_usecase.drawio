@@ -1,0 +1,119 @@
+<mxfile host="65bd71144e">
+    <diagram id="ReBq3ippXpxSI19bPVcb" name="UC_MediaLibrary">
+        <mxGraphModel dx="1131" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="frame1" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Media Library Management&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=220;height=40;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="600" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor_user" value="Người dùng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="230" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_LIB_01" value="Tải lên Media&lt;br&gt;(Upload)" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="70" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_LIB_02" value="Nhập Media&lt;br&gt;từ Link" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="170" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_LIB_03" value="Cấu hình&lt;br&gt;Ngôn ngữ xử lý" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="120" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_LIB_04" value="Tra cứu &amp;&amp;&lt;br&gt;Theo dõi trạng thái" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="260" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_LIB_05" value="Xóa Media" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="360" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="actor_user" target="UC_LIB_01" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="actor_user" target="UC_LIB_02" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="actor_user" target="UC_LIB_04" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="actor_user" target="UC_LIB_05" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge5" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="UC_LIB_01" target="UC_LIB_03" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge5_label" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge5" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="edge6" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="UC_LIB_02" target="UC_LIB_03" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge6_label" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="edge6" vertex="1" connectable="0">
+                    <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+                        <mxPoint x="5" y="9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="gfUb7fBS4W9jq360-yT0" name="UC_MediaLib_with_note">
+        <mxGraphModel dx="622" dy="291" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-1" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Media Library Management&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=220;height=40;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="40" width="700" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-2" value="Người dùng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="100" y="230" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-3" value="Tải lên Media&lt;br&gt;(Upload)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="70" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-4" value="Nhập Media&lt;br&gt;từ Link" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="170" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-5" value="Cấu hình&lt;br&gt;Ngôn ngữ xử lý" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="480" y="120" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-6" value="Tra cứu &amp;&amp;&lt;br&gt;Theo dõi trạng thái" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="260" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-7" value="Xóa Media" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="240" y="360" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-8" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gfn-zMm4i3pxdp6rt6oQ-2" target="gfn-zMm4i3pxdp6rt6oQ-3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gfn-zMm4i3pxdp6rt6oQ-2" target="gfn-zMm4i3pxdp6rt6oQ-4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gfn-zMm4i3pxdp6rt6oQ-2" target="gfn-zMm4i3pxdp6rt6oQ-6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-11" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gfn-zMm4i3pxdp6rt6oQ-2" target="gfn-zMm4i3pxdp6rt6oQ-7">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-12" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="gfn-zMm4i3pxdp6rt6oQ-3" target="gfn-zMm4i3pxdp6rt6oQ-5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-13" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="gfn-zMm4i3pxdp6rt6oQ-12">
+                    <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+                        <mxPoint x="5" y="-9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-14" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="gfn-zMm4i3pxdp6rt6oQ-4" target="gfn-zMm4i3pxdp6rt6oQ-5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-15" value="&amp;lt;&amp;lt;include&amp;gt;&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="gfn-zMm4i3pxdp6rt6oQ-14">
+                    <mxGeometry x="-0.1" y="1" relative="1" as="geometry">
+                        <mxPoint x="5" y="9" as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="gfn-zMm4i3pxdp6rt6oQ-16" value="&lt;b&gt;System Action:&lt;/b&gt;&lt;br&gt;Khi UC_LIB_01 hoặc UC_LIB_02 hoàn tất,&lt;br&gt;hệ thống tự động đẩy tác vụ vào&lt;br&gt;Message Queue để AI Engine xử lý." style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;size=15;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="300" width="250" height="100" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
