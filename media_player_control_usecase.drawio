@@ -1,0 +1,90 @@
+<mxfile host="65bd71144e">
+    <diagram id="bVX25Z8TAxVKn_5x8RUQ" name="UC_MediaPlayer">
+        <mxGraphModel dx="889" dy="444" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="frame1" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Quản lý trình phát media&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=200;height=40;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="40" width="420" height="410" as="geometry"/>
+                </mxCell>
+                <mxCell id="actor_user" value="Người dùng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="100" y="220" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_PLAYER_01" value="Điều khiển&lt;br&gt;Playback" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="60" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_PLAYER_02" value="Tùy biến hiển thị&lt;br&gt;Phụ đề" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="160" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_PLAYER_03" value="Tra cứu từ&lt;br&gt;nhanh" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="260" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="UC_PLAYER_04" value="Điều hướng qua&lt;br&gt;Phụ đề" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="280" y="360" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="actor_user" target="UC_PLAYER_01" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="actor_user" target="UC_PLAYER_02" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge3" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="actor_user" target="UC_PLAYER_03" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge4" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="actor_user" target="UC_PLAYER_04" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+    <diagram id="I-hcudiXsUU-4TUMixIg" name="UC_MediaPlayer_with_note">
+        <mxGraphModel dx="732" dy="366" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-1" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Quản lý trình phát media&lt;/font&gt;" style="shape=umlFrame;whiteSpace=wrap;html=1;pointerEvents=0;width=200;height=40;strokeWidth=2;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="50" width="680" height="550" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-2" value="Người dùng" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="140" y="280" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-3" value="Điều khiển&lt;br&gt;Playback" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="120" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-4" value="Tùy biến hiển thị&lt;br&gt;Phụ đề" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="220" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-5" value="Tra cứu từ&lt;br&gt;nhanh" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="320" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-6" value="Điều hướng qua&lt;br&gt;Phụ đề" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="420" width="140" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="0bZnAsYcoqSs-i517-Va-2" target="0bZnAsYcoqSs-i517-Va-3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-8" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="0bZnAsYcoqSs-i517-Va-2" target="0bZnAsYcoqSs-i517-Va-4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="0bZnAsYcoqSs-i517-Va-2" target="0bZnAsYcoqSs-i517-Va-5">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-10" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="0bZnAsYcoqSs-i517-Va-2" target="0bZnAsYcoqSs-i517-Va-6">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-11" value="&lt;b&gt;Chức năng:&lt;/b&gt;&lt;br&gt;• Play/Pause&lt;br&gt;• Tua tới/lùi&lt;br&gt;• Tốc độ: 0.5x - 2.0x" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;size=15;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="100" width="180" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-12" value="&lt;b&gt;3 lớp hiển thị:&lt;/b&gt;&lt;br&gt;• Phụ đề gốc&lt;br&gt;• Phụ đề dịch&lt;br&gt;• Phiên âm (Pinyin/IPA)" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;size=15;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="220" width="180" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-13" value="&lt;b&gt;Tính năng:&lt;/b&gt;&lt;br&gt;• Chọn từ để tra cứu&lt;br&gt;• Hiển thị nghĩa&lt;br&gt;• Phát âm mẫu" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;size=15;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="340" width="180" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="0bZnAsYcoqSs-i517-Va-14" value="&lt;b&gt;Seek by Caption:&lt;/b&gt;&lt;br&gt;Click vào dòng phụ đề&lt;br&gt;để tua video đến&lt;br&gt;đoạn tương ứng" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;verticalAlign=top;size=15;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="460" width="180" height="90" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
