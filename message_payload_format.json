@@ -1,0 +1,17 @@
+{
+  "job_id": "uuid-random-cho-job",
+  "media_id": "uuid-cua-media-trong-db",
+  "user_id": "uuid-cua-user",
+  "plan_type": "PRO", 
+  "input": {
+    "origin_type": "LOCAL", 
+    "storage_path": "uploads/audio/2026/01/user_123/file_abc.mp3",
+    "source_lang": "en",
+    "target_lang": "vi"
+  },
+  "config": {
+    "generate_phonetic": true,
+    "model_size": "base" 
+  },
+  "timestamp": 1705560000
+}
