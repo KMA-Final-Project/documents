@@ -1,0 +1,276 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider     = "prisma-client"
+  output       = "./generated"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ENUMS
+enum Role {
+  USER
+  ADMIN
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
+}
+
+enum MediaOriginType {
+  LOCAL
+  YOUTUBE
+}
+
+enum MediaStatus {
+  QUEUED
+  VALIDATING
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum ProcessingMode {
+  TRANSCRIBE
+  TRANSCRIBE_TRANSLATE
+}
+
+enum OtpType {
+  REGISTER
+  FORGOT_PASSWORD
+}
+
+// --- MODELS ---
+
+model User {
+  id            String  @id @default(uuid())
+  email         String  @unique
+  fullName      String  @map("full_name")
+  passwordHash  String  @map("password_hash")
+  emailVerified Boolean @default(false) @map("email_verified")
+
+  // Subscription Info
+  currentSubscriptionId         String?  @map("current_subscription_id")
+  quotaUsageCurrentMonth        Int      @default(0) @map("quota_usage_current_month")
+  quotaUsageCurrentMonthSeconds Int      @default(0) @map("quota_usage_current_month_seconds") // Track duration
+  lastQuotaResetDate            DateTime @default(now()) @map("last_quota_reset_date")
+  role                          Role     @default(USER)
+
+  // Relationships
+  currentSubscription Subscription?    @relation("UserCurrentSub", fields: [currentSubscriptionId], references: [id])
+  subscriptions       Subscription[]   @relation("UserHistorySub")
+  usageHistories      UsageHistory[]
+  mediaItems          MediaItem[]
+  vocabularies        UserVocabulary[]
+  otps                Otp[]
+  refreshTokens       RefreshToken[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model SubscriptionPlan {
+  id          String  @id // e.g. "FREE", "PRO_MONTHLY"
+  code        String  @unique
+  name        String
+  description String? @db.Text
+
+  // Marketing & Display
+  features  Json?   @map("features") // ["No Ads", "High Quality", "Fast Processing", etc]
+  tierLevel Int     @default(1)
+  isActive  Boolean @default(true) @map("is_active")
+
+  variants PlanVariant[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("subscription_plans")
+}
+
+model PlanVariant {
+  id     String @id @default(uuid())
+  planId String @map("plan_id")
+
+  name     String
+  price    Decimal @db.Decimal(10, 2)
+  currency String  @default("VND")
+
+  billingCycleType BillingCycleType @map("billing_cycle_type")
+
+  // Quota & Limits
+  maxDurationPerFile  Int @map("max_duration_per_file") // seconds
+  monthlyQuotaSeconds Int @map("monthly_quota_seconds")
+
+  isActive Boolean @default(true)
+
+  plan          SubscriptionPlan @relation(fields: [planId], references: [id])
+  subscriptions Subscription[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("plan_variants")
+}
+
+enum BillingCycleType {
+  MONTHLY
+  SIX_MONTHS
+  YEARLY
+  LIFETIME
+}
+
+model Subscription {
+  id     String @id @default(uuid())
+  userId String @map("user_id")
+
+  variantId String @map("variant_id")
+
+  startDate DateTime @map("start_date")
+  endDate   DateTime @map("end_date")
+
+  status SubscriptionStatus @default(ACTIVE)
+
+  // Snapshot
+  priceSnapshot               Decimal @map("price_snapshot") @db.Decimal(10, 2)
+  maxDurationPerFileSnapshot  Int     @map("max_duration_per_file_snapshot")
+  monthlyQuotaSecondsSnapshot Int     @map("monthly_quota_seconds_snapshot")
+
+  // Relationships
+  user    User        @relation("UserHistorySub", fields: [userId], references: [id])
+  users   User[]      @relation("UserCurrentSub")
+  variant PlanVariant @relation(fields: [variantId], references: [id])
+
+  usageHistories UsageHistory[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("subscriptions")
+}
+
+model UsageHistory {
+  id             String @id @default(uuid())
+  userId         String @map("user_id")
+  subscriptionId String @map("subscription_id")
+
+  cycleStartDate       DateTime @map("cycle_start_date")
+  cycleEndDate         DateTime @map("cycle_end_date")
+  totalSecondsUsed     Int      @default(0) @map("total_seconds_used")
+  quotaLimitAtThatTime Int      @map("quota_limit_at_that_time") // Snapshot quota
+
+  user         User         @relation(fields: [userId], references: [id])
+  subscription Subscription @relation(fields: [subscriptionId], references: [id])
+
+  @@map("usage_histories")
+}
+
+model MediaItem {
+  id     String @id @default(uuid())
+  userId String @map("user_id")
+
+  title      String
+  originType MediaOriginType @map("origin_type")
+  originUrl  String?         @map("origin_url") // Youtube URL or null if LOCAL
+
+  // Processing Configuration
+  processingMode ProcessingMode @default(TRANSCRIBE) @map("processing_mode")
+  sourceLanguage String?        @map("source_language") // Auto-detected: "en", "zh", "vi"
+
+  // Storage Keys (MinIO/S3 Paths)
+  audioS3Key      String  @map("audio_s3_key")
+  transcriptS3Key String? @map("transcript_s3_key") // Transcription-only JSON path
+  subtitleS3Key   String? @map("subtitle_s3_key") // Translated subtitle JSON path
+
+  durationSeconds        Int         @default(0) @map("duration_seconds")
+  status                 MediaStatus @default(QUEUED)
+  progress               Float       @default(0) @map("progress") // 0.0 to 1.0
+  currentStep            String?     @map("current_step") // Active pipeline stage: AUDIO_PREP, VAD, TRANSCRIBING, etc.
+  estimatedTimeRemaining Int?        @map("estimated_time_remaining") // Seconds remaining (ETA), null when idle/done
+  failReason             String?     @map("fail_reason") // Human-readable error
+
+  // Logic flag
+  countedInQuota Boolean @default(false) @map("counted_in_quota")
+
+  // Relationships
+  user             User             @relation(fields: [userId], references: [id])
+  userVocabularies UserVocabulary[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  deletedAt DateTime? @map("deleted_at") // Soft delete
+
+  @@map("media_items")
+}
+
+model Vocabulary {
+  id              String  @id @default(uuid())
+  word            String  @unique // Unique word
+  meaning         String  @db.Text
+  pronunciation   String?
+  exampleSentence String? @map("example_sentence") @db.Text
+  lookupCount     Int     @default(0) @map("lookup_count")
+
+  userVocabularies UserVocabulary[]
+
+  @@map("vocabularies")
+}
+
+model UserVocabulary {
+  id           String  @id @default(uuid())
+  userId       String  @map("user_id")
+  vocabularyId String  @map("vocabulary_id")
+  mediaItemId  String? @map("media_item_id") // Optional context
+
+  contextSentence String? @map("context_sentence") @db.Text // Personal context where user saved word
+
+  user       User       @relation(fields: [userId], references: [id])
+  vocabulary Vocabulary @relation(fields: [vocabularyId], references: [id])
+  mediaItem  MediaItem? @relation(fields: [mediaItemId], references: [id])
+
+  @@unique([userId, vocabularyId]) // Prevent duplicate saves per user
+  @@map("user_vocabularies")
+}
+
+model Otp {
+  id     String  @id @default(uuid())
+  email  String // Always required for email delivery
+  userId String? @map("user_id") // Optional - null for REGISTER, set for FORGOT_PASSWORD
+  code   String // 6-digit OTP code
+  type   OtpType
+
+  expiresAt DateTime @map("expires_at")
+  verified  Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@index([email, type])
+  @@index([userId, type])
+  @@map("otps")
+}
+
+model RefreshToken {
+  id         String   @id @default(uuid())
+  token      String   @unique
+  userId     String   @map("user_id")
+  deviceInfo String?  @map("device_info") // User Agent
+  ip         String? // Client IP address
+  expiresAt  DateTime @map("expires_at")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
